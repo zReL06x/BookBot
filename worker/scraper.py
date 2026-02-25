@@ -1,5 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
+
+current_datetime = datetime.now()
 
 def scrapeUrl(url):
     HEADERS = {
@@ -13,9 +16,13 @@ def scrapeUrl(url):
     # Creating the Soup Object containing all data
     soup = BeautifulSoup(webpage.content, "lxml")
     
-    title = soup.find("a", "novel-title")
-    content = soup.find_all("p")
+    #title = soup.find("a", "novel-title")
+    #content = soup.find_all("p")
+    print(webpage)
+    print(f"{current_datetime}: Scrape Complete!")
     
     
+#with open("output.txt", "a") as out:
+#     out.write(scrapeUrl("https://novelbin.com/b/my-living-shadow-system-devours-to-make-me-stronger/chapter-1-the-academys-weakest"))
 
-print(scrapeUrl("https://novelbin.com/b/my-living-shadow-system-devours-to-make-me-stronger/chapter-1-the-academys-weakest"))
+scrapeUrl("https://novelbin.com/b/my-living-shadow-system-devours-to-make-me-stronger/chapter-1-the-academys-weakest")
